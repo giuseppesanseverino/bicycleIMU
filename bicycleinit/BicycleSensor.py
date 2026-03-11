@@ -1,5 +1,3 @@
-"""A mock implementation of the BicycleSensor class for testing purposes."""
-
 from multiprocessing.connection import Connection
 
 
