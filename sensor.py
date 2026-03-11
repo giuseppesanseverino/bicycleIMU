@@ -31,7 +31,7 @@ def main(bicycleinit: Connection, name: str, args: dict):
             # Read Acceleration
             acc_x, acc_y, acc_z = imu.acceleration
 
-            acc_x_f, acc_y_f, acc_z_f = float(accel_x), float(accel_y), float(accel_z)
+            acc_x_f, acc_y_f, acc_z_f = float(acc_x), float(acc_y), float(acc_z)
 
             # Calculate Pitch and Roll
             pitch_rad = math.atan2(-acc_x_f, math.sqrt(acc_y_f**2 + acc_z_f**2))
