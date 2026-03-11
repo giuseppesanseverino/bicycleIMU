@@ -24,8 +24,12 @@ def main(bicycleinit: Connection, name: str, args: dict):
     
     RAD_TO_DEG = 180.0 / math.pi
     
-    sensor.send_msg("Started IMU Data Collection (LSM6DSO32)")
-
+    # Get the sampling rate from the config args, default to 100 Hz
+    sample_rate_hz = args.get('sample_rate', 100)
+    sleep_time = 1.0 / sample_rate_hz if sample_rate_hz > 0 else 0
+    
+    sensor.send_msg(f"Started IMU Data Collection (LSM6DSO32) at {sample_rate_hz} Hz")
+    
     try:
         while True:
             # Read Acceleration
@@ -42,7 +46,9 @@ def main(bicycleinit: Connection, name: str, args: dict):
             
             # Send Data to logger (at roughly 20Hz)
             sensor.write_measurement([acc_x_f, acc_y_f, acc_z_f, pitch, roll])
-            time.sleep(0.05)
+
+            if sleep_time > 0:
+                time.sleep(sleep_time)
             
     except Exception as e:
          sensor.send_msg({'type': 'log', 'level': 'error', 'msg': f"IMU Read Error: {e}"})
