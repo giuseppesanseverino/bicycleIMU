@@ -4,7 +4,7 @@
 
 The `bicycleIMU` repository provides a robust framework for implementing a custom bicycle IMU component. 
 
-This sensor is built using the `sensor_template` and utilizes an **LSM6DSO32** (or LSM6DSOX compatible) IMU connected over I2C to record raw XYZ-axis accelerations (m/s^2), as well as estimated pitch and roll angles (degrees).
+This sensor is built using the `[sensor_template](https://github.com/bicycledata/sensor_template)` and utilizes an **LSM6DSO32** (or LSM6DSOX compatible) IMU connected over I2C to record raw XYZ-axis accelerations (m/s^2), as well as estimated pitch and roll angles (degrees).
 
 ## Contributing
 
